@@ -11,28 +11,14 @@ export default function App() {
   return (
     <>
       <Header>
-        <div className="search-wrapper">
-          <SearchBar />
-
-          <div className="search-options">
-            <label>
-              <input type="checkbox" /> Add nearby airports
-            </label>
-            <label>
-              <input type="checkbox" /> Direct flights
-            </label>
-            <label>
-              <input type="checkbox" defaultChecked /> Add a hotel
-            </label>
-          </div>
-        </div>
+        <SearchBar />
       </Header>
 
       <div className="main-content">
         <CheapestDestinations />
       </div>
 
-      {/* Your sections start here */}
+      {/* Your sections */}
       <FAQ />
       <InternationalSites />
       <PlanningAdventure />
