@@ -15,7 +15,7 @@ export default function Header({ children }) {
         Millions of cheap flights. One simple search.
       </h1>
 
-      {/* Search bar + options must live INSIDE header */}
+      
       {children}
     </header>
   );
