@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -195,5 +194,360 @@ body {
   .cheapest-right img {
     width: 100%;
     height: auto;
+  }
+}
+
+/* ==========================================
+   FAQ SECTION STYLES
+   ========================================== */
+.faq-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.faq-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 32px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+}
+
+.faq-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  font-size: 15px;
+  color: #0062e3;
+  font-weight: 400;
+}
+
+.faq-question:hover {
+  color: #004bb5;
+}
+
+.faq-arrow {
+  transition: transform 0.3s ease;
+  color: #6b6b6b;
+}
+
+.faq-arrow.open {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 0 18px 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   INTERNATIONAL SITES SECTION STYLES
+   ========================================== */
+.international-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.international-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  font-size: 15px;
+  color: #111;
+  cursor: pointer;
+}
+
+.international-arrow {
+  transition: transform 0.3s ease;
+  color: #6b6b6b;
+}
+
+.international-arrow.open {
+  transform: rotate(180deg);
+}
+
+.international-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 16px 0;
+}
+
+.international-link {
+  font-size: 14px;
+  color: #0062e3;
+  text-decoration: none;
+}
+
+.international-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   PLANNING ADVENTURE SECTION STYLES
+   ========================================== */
+.planning-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 24px;
+}
+
+.planning-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 24px;
+}
+
+.planning-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.planning-tab {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  font-size: 14px;
+  color: #111;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.planning-tab:hover {
+  border-color: #0062e3;
+}
+
+.planning-tab.active {
+  background: #0062e3;
+  color: #fff;
+  border-color: #0062e3;
+}
+
+.planning-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.planning-nav {
+  background: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b6b6b;
+  flex-shrink: 0;
+}
+
+.planning-nav:hover {
+  border-color: #0062e3;
+  color: #0062e3;
+}
+
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 60px;
+  flex: 1;
+}
+
+.planning-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.planning-link {
+  font-size: 14px;
+  color: #0062e3;
+  text-decoration: none;
+}
+
+.planning-link:hover {
+  text-decoration: underline;
+}
+
+.planning-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.planning-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  cursor: pointer;
+}
+
+.planning-dot.active {
+  background: #0062e3;
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+.footer {
+  background: #021a33;
+  color: #fff;
+  padding: 40px 0 24px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-region {
+  flex-shrink: 0;
+}
+
+.region-selector {
+  display: flex;
+  gap: 12px;
+  background: #0a3d62;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.region-selector span {
+  padding: 0 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.region-selector span:last-child {
+  border-right: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.footer-column a {
+  font-size: 13px;
+  color: #8ec3ff;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-dropdowns {
+  gap: 16px;
+}
+
+.footer-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer-dropdown svg {
+  color: #8ec3ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+}
+
+.footer-bottom .copyright {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================
+   RESPONSIVE STYLES FOR NEW SECTIONS
+   ========================================== */
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planning-nav {
+    display: none;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-links {
+    gap: 40px;
   }
 }
