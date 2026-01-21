@@ -1,0 +1,13 @@
+# Eclipse / IDE files
+.metadata/
+.project
+.classpath
+.settings/
+
+# Build folders
+target/
+node_modules/
+
+# OS files
+Thumbs.db
+.DS_Store
