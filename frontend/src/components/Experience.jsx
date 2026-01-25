@@ -6,7 +6,7 @@ import "../App.css";
 import economyImg from "../assets/experience_economy.png";
 import businessImg from "../assets/experience_business.png";
 // Fallback or reused image since first class generation failed, user can ask to regenerate later
-import firstClassImg from "../assets/experience_business.png";
+import firstClassImg from "../assets/experience_first_class.png";
 
 export default function Experience() {
     return (
