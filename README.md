@@ -1,12 +1,12 @@
-# Flight Booking System
+# Skyninja Flight Booking
 
-A web-based flight booking application connecting travelers with destinations.
+Minimal flight booking web application.
 
 ## Features
-- Search flights (One Way, Round Trip, Multicity)
-- Book flights
-- User Authentication (Login/Signup)
+- Search (One Way, Round Trip, Multicity)
+- Navigation: Experience, Private Club, Contact
+- User Auth (Login/Signup)
 
-## Tech Stack
-- Frontend: React + Vite
-- Backend: Java Spring Boot
+## Run
+- Frontend: `npm run dev` in `/frontend`
+- Backend: Java Spring Boot (requires JDK)

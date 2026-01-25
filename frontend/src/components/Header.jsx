@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+// eslint-disable-next-line react/prop-types
+export default function Header({ customHero }) {
   return (
     <>
       {/* Announcement Bar */}
@@ -18,11 +19,10 @@ export default function Header() {
           </div>
 
           <div className="nav-links">
-            <a href="#">EXPLORE</a>
-            <a href="#">BOOK</a>
-            <a href="#">EXPERIENCE</a>
-            <a href="#">PRIVATE CLUB</a>
-            <a href="#">CONTACT</a>
+            <Link to="/">BOOK</Link>
+            <Link to="/experience">EXPERIENCE</Link>
+            <Link to="/private-club">PRIVATE CLUB</Link>
+            <Link to="/contact">CONTACT</Link>
           </div>
 
           <div className="nav-buttons">
@@ -35,21 +35,23 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="hero-content">
-          <div className="hero-left">
-            <h1 className="hero-title">
-              <em>Endless Budget</em><br />
-              <em>Flights. One Search.</em>
-            </h1>
+        {customHero ? customHero : (
+          <div className="hero-content">
+            <div className="hero-left">
+              <h1 className="hero-title">
+                <em>Endless Budget</em><br />
+                <em>Flights. One Search.</em>
+              </h1>
+            </div>
+            <div className="hero-right">
+              <p>
+                Finish Your Year With A Mini Break. Save 15% Or More When You Book And
+                Stay By 31 January 2026. Not Sure Where To Go? Use Our Interactive Map
+                To Find Flights To Great Destinations.
+              </p>
+            </div>
           </div>
-          <div className="hero-right">
-            <p>
-              Finish Your Year With A Mini Break. Save 15% Or More When You Book And
-              Stay By 7 January 2025. Not Sure Where To Go? Use Our Interactive Map
-              To Find Flights To Great Destinations.
-            </p>
-          </div>
-        </div>
+        )}
       </header>
     </>
   );
