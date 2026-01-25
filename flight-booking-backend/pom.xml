@@ -70,6 +70,14 @@
     		<artifactId>razorpay-java</artifactId>
     		<version>1.4.3</version>
 		</dependency>
+		
+		<!-- Validation-->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		
 
         
 

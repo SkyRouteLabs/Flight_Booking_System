@@ -1,4 +1,4 @@
-export default function Header({ children }) {
+export default function Header() {
   return (
     <>
       {/* Announcement Bar */}
@@ -40,8 +40,6 @@ export default function Header({ children }) {
             </p>
           </div>
         </div>
-
-        {children}
       </header>
     </>
   );

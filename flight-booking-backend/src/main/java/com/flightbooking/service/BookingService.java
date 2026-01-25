@@ -1,8 +1,11 @@
 package com.flightbooking.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.flightbooking.dto.BookingRequest;
+import com.flightbooking.dto.BookingResponse;
 import com.flightbooking.entity.Booking;
 import com.flightbooking.repository.BookingRepository;
 
@@ -15,26 +18,70 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
-    public Booking createBooking(BookingRequest request) {
+    // ✅ CREATE BOOKING
+    public BookingResponse createBooking(BookingRequest request) {
 
-        Booking booking = new Booking(
+        Booking booking = bookingRepository.save(
+            new Booking(
                 request.getPassengerName(),
                 request.getAirline(),
                 request.getFlightNumber(),
+                request.getSource(),
+                request.getDestination(),
+                request.getDepartureDate(),
+                request.getTravelClass(),
+                request.getTravellers(),
                 request.getPrice(),
                 "CREATED"
+            )
         );
 
-        return bookingRepository.save(booking);
+        return mapToResponse(booking);
     }
-    
-    public Booking markBookingAsPaid(Long bookingId) {
+
+    // ✅ PAYMENT
+    public BookingResponse markBookingAsPaid(Long bookingId) {
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
 
         booking.setStatus("PAID");
-        return bookingRepository.save(booking);
+        bookingRepository.save(booking);
+
+        return mapToResponse(booking);
     }
 
+    // ✅ GET BOOKING BY ID (Confirmation page refresh)
+    public BookingResponse getBookingById(Long bookingId) {
+
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        return mapToResponse(booking);
+    }
+
+    // ✅ GET BOOKINGS BY PASSENGER (My Bookings)
+    public List<BookingResponse> getBookingsByPassenger(String passengerName) {
+
+        return bookingRepository.findByPassengerName(passengerName)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    // 🔁 COMMON MAPPER (clean & reusable)
+    private BookingResponse mapToResponse(Booking booking) {
+        return new BookingResponse(
+            booking.getId(),
+            booking.getAirline(),
+            booking.getFlightNumber(),
+            booking.getSource(),
+            booking.getDestination(),
+            booking.getDepartureDate(),
+            booking.getTravelClass(),
+            booking.getTravellers(),
+            booking.getPrice(),
+            booking.getStatus()
+        );
+    }
 }
