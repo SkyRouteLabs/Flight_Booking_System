@@ -38,8 +38,7 @@ export default function PassengerDetails() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        passengerName: passengers[0], // primary passenger
-        airline: flight.airline,
+        passengerName: passengers[0], 
         flightNumber: flight.flightNumber,
         source,
         destination,
