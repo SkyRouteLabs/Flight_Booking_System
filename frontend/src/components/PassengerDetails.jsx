@@ -4,6 +4,16 @@ import { useState } from "react";
 export default function PassengerDetails() {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const fallbackState = {
+    flight: { flightNumber: "AI-101", price: 5000 },
+    source: "Mumbai",
+    destination: "Delhi",
+    departureDate: "2024-10-25",
+    travelClass: "Economy",
+    travellers: 2,
+  };
 
   const {
     flight,
@@ -11,12 +21,8 @@ export default function PassengerDetails() {
     destination,
     departureDate,
     travelClass,
-    travellers = 1,
-  } = state || {};
-
-  if (!flight) {
-    return <h2 style={{ padding: 40 }}>No flight selected</h2>;
-  }
+    travellers,
+  } = state || fallbackState;
 
   const [passengers, setPassengers] = useState(
     Array(travellers).fill("")
@@ -34,67 +40,106 @@ export default function PassengerDetails() {
       return;
     }
 
-    const response = await fetch("http://localhost:8080/api/bookings", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        passengerName: passengers[0], 
-        flightNumber: flight.flightNumber,
-        source,
-        destination,
-        departureDate,
-        travelClass,
-        travellers: passengers.length,
-        price: flight.price,
-      }),
-    });
+    setLoading(true);
 
-    const booking = await response.json();
+    const booking = {
+      id: "BK-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+      passengerName: passengers[0].trim(),
+      flightNumber: flight.flightNumber,
+      airline: "Air India",
+      price: flight.price * travellers,
+      status: "CONFIRMED",
+    };
 
-    navigate("/booking-confirmed", {
-      state: { booking },
-    });
+    setTimeout(() => {
+      navigate("/booking-confirmed", { state: { booking } });
+    }, 800);
   };
 
   return (
-    <div style={{ padding: "40px", maxWidth: "600px" }}>
-      <h2>Passenger Details</h2>
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+          url("/image.png")
+        `,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "40px",
+      }}
+    >
+      <div
+        style={{
+          background: "#fff",
+          padding: "30px",
+          borderRadius: "14px",
+          maxWidth: "520px",
+          width: "100%",
+          boxShadow: "0 12px 30px rgba(0,0,0,0.2)",
+        }}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+          Passenger Details
+        </h2>
 
-      {passengers.map((name, index) => (
         <div
-          key={index}
           style={{
-            border: "1px solid #ddd",
+            background: "#f1f5ff",
+            padding: "14px",
             borderRadius: "8px",
-            padding: "16px",
-            marginBottom: "16px",
+            marginBottom: "20px",
+            fontSize: "14px",
           }}
         >
-          <h4 style={{ marginBottom: "10px" }}>
-            Passenger {index + 1} {index === 0 && "(Primary)"}
-          </h4>
-
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => handleChange(index, e.target.value)}
-            style={{
-              width: "100%",
-              padding: "10px",
-              fontSize: "14px",
-            }}
-          />
+          <strong>{flight.flightNumber}</strong><br />
+          {source} → {destination}<br />
+          {departureDate} | {travelClass}
         </div>
-      ))}
 
-      <button
-        onClick={handleConfirm}
-        className="search-btn"
-        style={{ marginTop: "20px" }}
-      >
-        Confirm Booking
-      </button>
+        {passengers.map((name, index) => (
+          <div key={index} style={{ marginBottom: "16px" }}>
+            <label style={{ fontWeight: 600 }}>
+              Passenger {index + 1} {index === 0 && "(Primary)"}
+            </label>
+            <input
+              type="text"
+              value={name}
+              placeholder="Full Name"
+              onChange={(e) => handleChange(index, e.target.value)}
+              style={{
+                width: "100%",
+                padding: "12px",
+                marginTop: "6px",
+                borderRadius: "6px",
+                border: "1px solid #ccc",
+              }}
+            />
+          </div>
+        ))}
+
+        <button
+          onClick={handleConfirm}
+          disabled={loading}
+          style={{
+            width: "100%",
+            padding: "14px",
+            background: "#1e2a8a",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "16px",
+            fontWeight: "600",
+            cursor: "pointer",
+            opacity: loading ? 0.7 : 1,
+          }}
+        >
+          {loading ? "Booking..." : "Confirm Booking"}
+        </button>
+      </div>
     </div>
   );
 }
