@@ -4,9 +4,11 @@
 .classpath
 .settings/
 
-# Build folders
+# Backend build
 target/
-node_modules/
+
+# Frontend build
+frontend/node_modules/
 
 # OS files
 Thumbs.db
